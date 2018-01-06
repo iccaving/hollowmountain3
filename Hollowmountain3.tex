@@ -1,0 +1,189 @@
+\documentclass[symmetric, a4paper, 11pt]{tufte-book}
+
+
+%______________________HEADER INFO
+\title{The Hollow Mountain III}
+\author{Imperial College Caving Club - Jamarska Sekcija PD Tolmin}
+\publisher{Explorations in Tolminski Migovec 2013--2017}
+
+
+%________________________PACKAGE ZONE
+
+%___________Handling the graphics, floats and captions
+\usepackage{grffile}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{lettrine}
+
+
+%____________Handling the fonts
+\usepackage[utf8]{inputenc}
+
+%____________General page structure + typesetting options
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage[strict]{changepage}
+\usepackage{setspace}
+\usepackage{xfrac}
+\usepackage[pages=some,placement=center]{background}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    h\null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+%_________Allows the use of RGBA call
+\usepackage{xcolor}
+
+%________FANCY LATEX TABLES
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{multirow}
+%_______REFERENCING
+\usepackage{cleveref}
+\usepackage{hyperref}
+\usepackage{cite}
+
+
+%__________________________END OF PACKAGE ZONE
+
+%___________manual override of the numbering and listing in the table of contents: number down to parts, list down to sections.
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{1}
+
+%____________________ CHANGING FONT DEFAULTS
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\renewcommand{\familydefault}{\rmdefault}
+
+%____________________THE TWO PAGE BACKGROUND MACRO (from:https://tex.stackexchange.com/questions/23860/how-to-include-a-picture-over-two-pages-left-part-on-left-side-right-on-right).
+\usepackage{adjustbox}
+\usepackage{afterpage}
+\usepackage{placeins}
+
+
+\setcounter{totalnumber}{1}
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\renewcommand{\topfraction}{.99}
+\renewcommand{\bottomfraction}{.99}
+\renewcommand{\textfraction}{.01}
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+
+
+
+%____________________ MORE FORMATTING OPTIONS
+\newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}} \\ \rmfamily}
+
+\newenvironment{pagefigure}{% This enables the full width captions.
+    \begin{figure*}[b]
+    \classiccaptionstyle
+  }{\end{figure*}}
+
+%_____________________Definition of the color box environment for the main title pages...
+\usepackage[most]{tcolorbox}
+
+\tcbset{	frame code={}
+    		center title,
+   			left=0pt,
+    		right=0pt,
+    		top=0pt,
+    		bottom=0pt,
+    		colback=white,
+    		colframe=white,
+   		width=\dimexpr\textwidth\relax,
+    		enlarge left by=0mm,
+    		boxsep=5pt,
+    		arc=0pt,outer arc=0pt,
+    		opacityback=0.7
+    	}
+
+%__________________Definitiion of the Tikz environments for side stories and fancy tables
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes}
+\usepackage{amsmath,amssymb}
+
+\tikzstyle{name-dest} = [	draw=bettergrey!80, 
+					fill=bettergrey!20, 
+					thick,
+					rectangle, 
+					rounded corners, 
+					inner sep=5pt, 
+					inner ysep=10pt
+					]
+					
+\tikzstyle{fancytitle} =	 [	font=\sffamily\large, 
+					fill=bettergrey,
+					text=white
+					]
+
+\tikzstyle{table} = [		draw={rgb:red,1;green,2;blue,5},
+					fill={rgb:red,1;green,2;blue,5;white,24},
+					thick,
+					rectangle, 
+					rounded corners, 
+					inner sep=5pt, 
+					inner ysep=10pt
+					]
+					
+\tikzstyle{tabletitle} = [	font=\sffamily\large,
+					fill={rgb:red,1;green,2;blue,5},
+					text=white
+					]
+					
+%__________________End of the definition of: Tikz environments for side stories and fancy tables	
+
+
+
+
+%___________________START OF THE DOCUMENT: CONTENT ADDED UNDERNEATH				
+
+\begin{document}
+
+\maketitle %Title page
+
+\justify
+
+\tableofcontents %Table of contents listing parts -chapters - sections
+
+\newpage
+
+\setfloatalignment{b} %puts the caption in line with the bottom of the floats for the whole doc.
+
+%__________________________PART 1 -INTRODUCTION (geography, geology, surveying, history, etc...
+
+	\input{text/Part1}
+%____________________________PART 2 - EXPLORATION OF MIGOVEC
+
+	\include{text/other_tex_files/part2_intro}
+%__________________________________ CHAPTERS
+  	
+	\input{text/2013/2013}
+ 	\input{text/2014/2014}
+	\input{text/2015/2015}
+	\input{text/2016/2016}
+	\input{text/2017/2017}
+%_______________________________  PART 3 - TRIP & CAVE DESCRIPTIONS - SURVEYS
+
+	\input{text/Part3}
+	
+	\addcontentsline{toc}{chapter}{List of figures}\listoffigures
+	
+	\label{Bibliography}
+	
+	\bibliographystyle{apalike}
+	\bibliography{biblio_hm3}
+
+	\include{text/other_tex_files/Post-script}
+
+\end{document}

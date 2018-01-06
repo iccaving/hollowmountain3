@@ -1,0 +1,33 @@
+\RequirePackage{etoolbox}
+\makeatletter
+\newif\if@tufte@margtab\@tufte@margtabfalse
+\AtBeginEnvironment{margintable}{\@tufte@margtabtrue}
+\AtEndEnvironment{margintable}{\@tufte@margtabfalse}
+
+\newcommand{\classiccaptionstyle}{%
+    \long\def\@caption##1[##2]##3{%
+        \par
+        \addcontentsline{\csname ext@##1\endcsname}{##1}%
+        {\protect\numberline{\csname the##1\endcsname}{\ignorespaces ##2}}%
+        \begingroup
+        \@parboxrestore
+        \if@minipage
+        \@setminipage
+        \fi
+        \normalsize
+        \@makecaption{\csname fnum@##1\endcsname}{\ignorespaces ##3}\par
+        \endgroup}
+    \long\def\@makecaption##1##2{%
+        \vskip\abovecaptionskip
+        \sbox\@tempboxa{\@tufte@caption@font##1: ##2}%
+        \ifdim \wd\@tempboxa >\hsize
+        \@tufte@caption@font\if@tufte@margtab\@tufte@caption@justification\fi##1: ##2\par
+        \else
+        \global \@minipagefalse
+        \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+        \fi
+        \vskip\belowcaptionskip}
+    %   \setcaptionfont{\normalfont}
+    \let\caption\@tufte@orig@caption%
+    \let\label\@tufte@orig@label}
+\makeatother
