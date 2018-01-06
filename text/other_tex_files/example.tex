@@ -1,3 +1,113 @@
-⟨*example⟩\documentclass[british]{article}[2014/09/29]% v1.4h %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \usepackage[% extension=pdf,% plainpages=false,% pdfpagelabels=true,% hyperindex=false,% pdflang={en},% pdftitle={pagecolor package example},% pdfauthor={H.-Martin Muench},% pdfsubject={Example for the pagecolor package},% pdfkeywords={LaTeX, pagecolor, thepagecolor, page colour,%  H.-Martin Muench},% pdfview=Fit,pdfstartview=Fit,% pdfpagelayout=SinglePage%]{hyperref}[2012/11/06]% v6.83m\usepackage[x11names]{xcolor}[2007/01/21]% v2.11 % The xcolor package would not be needed for just using % the base colours. The color package would be sufficient for that.\usepackage[pagecolor={LightGoldenrod1},%  nopagecolor={none}]{pagecolor}[2015/08/30]% v1.0h\usepackage{afterpage}[2014/10/28]% v1.08 % The afterpage package is generally not needed, % but the |\newpagecolor{somecolour}\afterpage{\restorepagecolor}| % construct shall be demonstrated.\usepackage{lipsum}[2014/07/27]% v1.3 % The lipsum package is generally not needed, % but some blind text is needed for the example.\usepackage{hologo}[2012/04/26]% v1.10 % The hologo package is only needed to write % \hologo{pdfTeX}, \hologo{LuaTeX}, and \hologo{XeTeX}.\gdef\unit#1{\mathord{\thinspace\mathrm{#1}}}%\listfiles\begin{document}\pagenumbering{arabic}\section*{Example for pagecolor}This example demonstrates the use of package\newline\textsf{pagecolor}, v1.0h as of 2015/08/30 (HMM).\newlineThe used options were\newline\verb|pagecolor={LightGoldenrod1}| (\verb|pagecolor={none}|would be the default), and\verb|pagecolor={none}| (which is the default).\newline\noindent For more details please see the documentation!\newline\noindent {\color{teal} Save per page about $200\unit{ml}$ water,$2\unit{g}$ CO$_{2}$ and $2\unit{g}$ wood:\newlineTherefore please print only if this is really necessary.}\newline5
-56 \noindent The current page (background) colour is\newline57 \verb|\thepagecolor|\ =\ \thepagecolor \newline58 (and \verb|\thepagecolornone|\ =\ \thepagecolornone ,59 which would only be different from \verb|\thepagecolor|,60 when the page colour would be \verb|none|).6162 \pagebreak63 \pagecolor{rgb:-green!40!yellow,3;green!40!yellow,2;red,1}6465 {\color{white} The current page (background) colour is\newline66 \verb|\thepagecolor|\ =\ \thepagecolor . \newline}6768 {\color{\thepagecolor} And that makes this text practically invisible.69 \newline}7071 {\color{white} Which made the preceding line of text practically72 invisible.}7374 \pagebreak75 \newpagecolor{red}7677 This page uses \verb|\newpagecolor{red}|. 7879 \pagebreak80 \restorepagecolor8182 {\color{white}And this page uses \verb|\restorepagecolor| to restore83 the page colour to the value it had before the red page.}8485 \pagebreak86 \pagecolor{none}8788 This page uses \verb|\pagecolor{none}|. If the \verb|\nopagecolor|89 command is known (\hologo{pdfTeX} and \hologo{LuaTeX}; not yet for90 dvips, dvipdfm(x) or \hologo{XeTeX}), the page colour is now91 \verb|none| (because option \verb|nopagecolor={none}|), otherwise92 \verb|white| (or the colour given with option \verb|nopagecolor={...}|):93 \verb|\thepagecolor|\ =\ \thepagecolor\ and94 \verb|\thepagecolornone|\ =\ \thepagecolornone .9596 \pagebreak97 \restorepagecolor9899 {\color{white}\verb|\restorepagecolor| restored the page colour again.}100101 \pagebreak102 \pagecolor{green}103104 This page is green due to \verb|\pagecolor{green}|. 105106 \pagebreak107 \newpagecolor{blue}\afterpage{\restorepagecolor}108109 {\color{white}\verb|\newpagecolor{blue}\afterpage{\restorepagecolor}|%110 \newline111 was used here, i.\,e.~this page is blue, and the next one will112 automatically have the same page colour before it was changed to blue113 here (i.\,e. green).}6
-114115 \smallskip116 {\color{red}\textbf{\lipsum[1-11]}}117 \bigskip118119 The page colour was changed back at the end of the page -120 in mid-sentence!121122 \end{document}123 ⟨/example⟩
+⟨*example⟩
+\documentclass[british]{article}[2014/09/29]% v1.4h %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \usepackage[%
+ extension=pdf,%
+ plainpages=false,%
+ pdfpagelabels=true,%
+ hyperindex=false,%
+ pdflang={en},%
+ pdftitle={pagecolor package example},%
+ pdfauthor={H.-Martin Muench},%
+ pdfsubject={Example for the pagecolor package},%
+ pdfkeywords={LaTeX, pagecolor, thepagecolor, page colour,%
+  H.-Martin Muench},%
+ pdfview=Fit,pdfstartview=Fit,%
+ pdfpagelayout=SinglePage%
+]{hyperref}[2012/11/06]% v6.83m
+\usepackage[x11names]{xcolor}[2007/01/21]% v2.11
+ % The xcolor package would not be needed for just using
+ % the base colours. The color package would be sufficient for that.
+\usepackage[pagecolor={LightGoldenrod1},%
+  nopagecolor={none}]{pagecolor}[2015/08/30]% v1.0h
+\usepackage{afterpage}[2014/10/28]% v1.08
+ % The afterpage package is generally not needed,
+ % but the |\newpagecolor{somecolour}\afterpage{\restorepagecolor}|
+ % construct shall be demonstrated.
+\usepackage{lipsum}[2014/07/27]% v1.3
+ % The lipsum package is generally not needed,
+ % but some blind text is needed for the example.
+\usepackage{hologo}[2012/04/26]% v1.10
+ % The hologo package is only needed to write
+ % \hologo{pdfTeX}, \hologo{LuaTeX}, and \hologo{XeTeX}.
+\gdef\unit#1{\mathord{\thinspace\mathrm{#1}}}%
+\listfiles
+\begin{document}
+\pagenumbering{arabic}
+\section*{Example for pagecolor}
+This example demonstrates the use of package\newline
+\textsf{pagecolor}, v1.0h as of 2015/08/30 (HMM).\newline
+The used options were\newline
+\verb|pagecolor={LightGoldenrod1}| (\verb|pagecolor={none}|
+would be the default), and
+\verb|pagecolor={none}| (which is the default).\newline
+\noindent For more details please see the documentation!\newline
+\noindent {\color{teal} Save per page about $200\unit{ml}$ water,
+$2\unit{g}$ CO$_{2}$ and $2\unit{g}$ wood:\newline
+Therefore please print only if this is really necessary.}\newline
+5
+56 \noindent The current page (background) colour is\newline
+57 \verb|\thepagecolor|\ =\ \thepagecolor \newline
+58 (and \verb|\thepagecolornone|\ =\ \thepagecolornone ,
+59 which would only be different from \verb|\thepagecolor|,
+60 when the page colour would be \verb|none|).
+61
+62 \pagebreak
+63 \pagecolor{rgb:-green!40!yellow,3;green!40!yellow,2;red,1}
+64
+65 {\color{white} The current page (background) colour is\newline
+66 \verb|\thepagecolor|\ =\ \thepagecolor . \newline}
+67
+68 {\color{\thepagecolor} And that makes this text practically invisible.
+69 \newline}
+70
+71 {\color{white} Which made the preceding line of text practically
+72 invisible.}
+73
+74 \pagebreak
+75 \newpagecolor{red}
+76
+77 This page uses \verb|\newpagecolor{red}|. 78
+79 \pagebreak
+80 \restorepagecolor
+81
+82 {\color{white}And this page uses \verb|\restorepagecolor| to restore
+83 the page colour to the value it had before the red page.}
+84
+85 \pagebreak
+86 \pagecolor{none}
+87
+88 This page uses \verb|\pagecolor{none}|. If the \verb|\nopagecolor|
+89 command is known (\hologo{pdfTeX} and \hologo{LuaTeX}; not yet for
+90 dvips, dvipdfm(x) or \hologo{XeTeX}), the page colour is now
+91 \verb|none| (because option \verb|nopagecolor={none}|), otherwise
+92 \verb|white| (or the colour given with option \verb|nopagecolor={...}|):
+93 \verb|\thepagecolor|\ =\ \thepagecolor\ and
+94 \verb|\thepagecolornone|\ =\ \thepagecolornone .
+95
+96 \pagebreak
+97 \restorepagecolor
+98
+99 {\color{white}\verb|\restorepagecolor| restored the page colour again.}
+100
+101 \pagebreak
+102 \pagecolor{green}
+103
+104 This page is green due to \verb|\pagecolor{green}|. 105
+106 \pagebreak
+107 \newpagecolor{blue}\afterpage{\restorepagecolor}
+108
+109 {\color{white}\verb|\newpagecolor{blue}\afterpage{\restorepagecolor}|%
+110 \newline
+111 was used here, i.\,e.~this page is blue, and the next one will
+112 automatically have the same page colour before it was changed to blue
+113 here (i.\,e. green).}
+6
+114
+115 \smallskip
+116 {\color{red}\textbf{\lipsum[1-11]}}
+117 \bigskip
+118
+119 The page colour was changed back at the end of the page -
+120 in mid-sentence!
+121
+122 \end{document}
+123 ⟨/example⟩
