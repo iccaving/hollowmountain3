@@ -17,6 +17,40 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ragged2e}
+\usepackage[framemethod=tikz]{mdframed}
+%\usepackage{marginnote}
+\usetikzlibrary{calc}
+
+%_________________Magic Boxes
+\reversemarginpar
+
+\newsavebox\mybox
+\newlength\BoxHt
+
+\newcommand\mymarginbox[2][-2.2\baselineskip]{%
+\begin{lrbox}{\mybox}
+\parbox{\marginparwidth}{#2}
+\end{lrbox}%
+\settoheight\BoxHt{\usebox\mybox}%
+\raisebox{\BoxHt}[0pt][0pt]{\marginnote{%
+  \begin{mdframed}[
+    userdefinedwidth=\marginparwidth,
+    innerleftmargin=3pt,
+    innerrightmargin=3pt,
+    linecolor=BrickRed,
+    frametitle=\colorbox{white}{\space Caution\space},
+    frametitlefont=\color{BrickRed}\sffamily,
+    innertopmargin=10pt,
+    frametitleaboveskip=-\ht\strutbox,
+    frametitlebelowskip=-\ht\strutbox,
+    frametitlealignment=\raggedright,
+    singleextra={\fill[BrickRed] let \p1=(P), \p2=(O)  in 
+    ( $ (P|-0,0.5*\y2+0.5*\y1) + (0,-4pt) $ ) -- +(4pt,4pt) -- +(0,8pt) -- cycle;}
+]\RaggedRight\small#2\end{mdframed}}[#1]}}
+
+
 
 %____________Handling the fonts
 \usepackage[utf8]{inputenc}
