@@ -25,7 +25,7 @@
 
 %____________General page structure + typesetting options
 \usepackage{multicol}
-\usepackage{parcolumns}
+%\usepackage{parcolumns}
 \usepackage{ragged2e}
 \usepackage[strict]{changepage}
 \usepackage{setspace}
@@ -195,9 +195,9 @@
         \begin{tikzpicture}
             \node [name-dest] (box){%
                 \begin{minipage}{\textwidth}
-                    \begin{parcolumns}{2}
+                    \begin{multicols}{2}
 					#2
-                  \end{parcolumns}
+                  \end{multicols}
                 \end{minipage}
             };
             \node[fancytitle, right=10pt] at (box.north west) {#1};
@@ -241,8 +241,6 @@
 %_______________________________  PART 3 - TRIP & CAVE DESCRIPTIONS - SURVEYS
 
 	\input{text/Part3}
-	
-	\addcontentsline{toc}{chapter}{List of figures}\listoffigures
 	
     \printindex
     \printindex[aut]
