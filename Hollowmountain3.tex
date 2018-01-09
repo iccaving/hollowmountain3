@@ -1,9 +1,9 @@
-\documentclass[symmetric, a4paper, 11pt]{tufte-book}
+\documentclass[symmetric, a4paper]{tufte-book}
 
 
 %______________________HEADER INFO
 \title{The Hollow Mountain III}
-\author{Imperial College Caving Club - Jamarska Sekcija PD Tolmin}
+\author{Jamarska Sekcija Planinskega Drustva Tolmin- Imperial College Caving Club}
 \publisher{Explorations in Tolminski Migovec 2013--2017}
 
 
@@ -16,18 +16,23 @@
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
+\usepackage{xparse}
+
+
 
 %____________Handling the fonts
 \usepackage[utf8]{inputenc}
 
 %____________General page structure + typesetting options
 \usepackage{multicol}
+%\usepackage{parcolumns}
 \usepackage{ragged2e}
 \usepackage[strict]{changepage}
 \usepackage{setspace}
 \usepackage{xfrac}
 \usepackage[pages=some,placement=center]{background}
 \usepackage{afterpage}
+\usepackage{ulem}
 
 \newcommand\blankpage{%
     h\null
@@ -78,12 +83,44 @@
   \ifodd\value{page}\hbox{}\newpage\fi
 }
 
+\fancypagestyle{endchapter}{%
+  \fancyhf{}% Clear header/footer
+  \fancyfoot[OR]{\textbf{\thepage}}%
+  \fancyfoot[EL]{\textbf{\thepage}}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+%changing the spacing of itemize (also ...)
+\usepackage{enumitem}
+\newcommand{\localtextbulletone}{\textcolor{bettergrey}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+\newenvironment{citemize}{\begin{itemize}[itemsep=0.25ex,leftmargin=1cm, rightmargin=1cm, label=\localtextbulletone]}{\end{itemize}}
+
+
+
 
 
 
 %____________________ MORE FORMATTING OPTIONS
-\newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}} \\ \rmfamily}
 
+
+%indexing the passage names and highlighting them in some way the new command is simply \passage{}
+%If using passage in the caption environment - \protect\passage{} will work.
+%THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
+\usepackage{imakeidx}
+\DeclareDocumentCommand{\passage}{ O{}  m }{\textbf{\textsc{#2}}% 
+\index{#2!#1}}
+\makeindex[columns=2] %this default index takes in all the passage names.
+
+\makeindex[name=aut, title =Authors, columns =1]
+
+
+\newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
+\index[aut]{#1} \rmfamily}
+
+
+
+%If caption runs at bottom of page - use pagefigure environment instead of figure* !
 \newenvironment{pagefigure}{% This enables the full width captions.
     \begin{figure*}[b]
     \classiccaptionstyle
@@ -94,10 +131,10 @@
 
 \tcbset{	frame code={}
     		center title,
-   			left=0pt,
-    		right=0pt,
-    		top=0pt,
-    		bottom=0pt,
+   			left=10pt,
+    		right=10pt,
+    		top=-50pt,
+    		bottom=10pt,
     		colback=white,
     		colframe=white,
    		width=\dimexpr\textwidth\relax,
@@ -107,18 +144,8 @@
     		opacityback=0.7
     	}
         
-%_________________Definition of fancy margin notes
-\let\oldmarginpar\marginpar
-% renew the \marginpar command to draw 
-% a node; it has a default setting which 
-% can be overwritten
-\renewcommand{\marginpar}[2][rectangle,draw,fill=orange,rounded corners]{%
-        \oldmarginpar{%
-        \tikz \node at (0,0) [#1]{#2};}%
-        }
 
-
-%__________________Definitiion of the Tikz environments for side stories and fancy tables
+%__________________Definition of the Tikz environments for side stories and fancy tables
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
 \usepackage{amsmath,amssymb}
@@ -137,8 +164,8 @@
 					text=white
 					]
 
-\tikzstyle{table} = [		draw={rgb:red,1;green,2;blue,5},
-					fill={rgb:red,1;green,2;blue,5;white,24},
+\tikzstyle{table} = [		draw={ultramarine!80},
+					fill={ultramarine!20},
 					thick,
 					rectangle, 
 					rounded corners, 
@@ -147,9 +174,38 @@
 					]
 					
 \tikzstyle{tabletitle} = [	font=\sffamily\large,
-					fill={rgb:red,1;green,2;blue,5},
+					fill={ultramarine!80},
 					text=white
 					]
+                    
+\newcommand{\margininbox}[2]{
+                        \begin{marginfigure}
+                        \begin{tikzpicture}
+                        \node [name-dest] (box){%
+                            \begin{minipage}{0.9\textwidth}
+                            #1
+                            \end{minipage}
+                        };
+                        \end{tikzpicture}
+                        \end{marginfigure}
+}
+
+\newcommand{\fullwidthbox}[2]{
+   \begin{figure*}
+        \begin{tikzpicture}
+            \node [name-dest] (box){%
+                \begin{minipage}{\textwidth}
+                    \begin{multicols}{2}
+					#2
+                  \end{multicols}
+                \end{minipage}
+            };
+            \node[fancytitle, right=10pt] at (box.north west) {#1};
+        \end{tikzpicture}
+    \end{figure*}
+}
+
+
 					
 %__________________End of the definition of: Tikz environments for side stories and fancy tables	
 
@@ -188,6 +244,11 @@
 	
 	\addcontentsline{toc}{chapter}{List of figures}\listoffigures
 	
+    \printindex
+    \printindex[aut]
+
+   
+    
 	\label{Bibliography}
 	
 	\bibliographystyle{apalike}

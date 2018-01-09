@@ -1457,9 +1457,9 @@
 % The 'fancy' page style is the default style for all pages.
 \fancyhf{} % clear header and footer fields
 \ifthenelse{\boolean{@tufte@twoside}}
-  {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
-    \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
-  {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
+  {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\leftmark}}}%
+    \fancyhead[RO]{\smallcaps{\newlinetospace{\rightmark}}\quad\thepage}}
+  {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\rightmark}}\quad\thepage}}
 
 
 % The `plain' page style is used on chapter opening pages.
@@ -1543,9 +1543,9 @@
   {%
   \sffamily%
   \begin{fullwidth}%
-  \fontsize{18}{20}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklessauthor}}%
+  \fontsize{16}{18}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklessauthor}}%
   \vspace{11.5pc}%
-  \fontsize{36}{40}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklesstitle}}%
+  \fontsize{18}{20}\selectfont\par\noindent\textcolor{bettergrey}{\allcaps{\thanklesstitle}}%
   \vfill%
   \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
   \end{fullwidth}%
@@ -1567,9 +1567,9 @@
     \let\@@author\@empty
     \let\@@date\@empty
     \ifthenelse{\boolean{@tufte@sfsidenotes}}{%
-      \gdef\@@title{\sffamily\LARGE\allcaps{\@title}\par}%
-      \gdef\@@author{\sffamily\Large\allcaps{\@author}\par}%
-      \gdef\@@date{\sffamily\Large\allcaps{\@date}\par}%
+      \gdef\@@title{\sffamily\Large\allcaps{\@title}\par}%
+      \gdef\@@author{\sffamily\Large\textsc{\@author}\par}%
+      \gdef\@@date{\sffamily\Large\textsc{\@date}\par}%
     }{%
       \gdef\@@title{\LARGE\itshape\@title\par}%
       \gdef\@@author{\Large\itshape\@author\par}%
