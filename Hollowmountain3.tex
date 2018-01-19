@@ -183,18 +183,23 @@
                         \begin{tikzpicture}
                         \node [name-dest] (box){%
                             \begin{minipage}{0.9\textwidth}
-                            #1
+                            \vspace{5pt}
+                            #2
                             \end{minipage}
                         };
+                        \node[fancytitle, right=10pt] at (box.north west) {#1};
                         \end{tikzpicture}
                         \end{marginfigure}
 }
+
+
 
 \newcommand{\fullwidthbox}[2]{
    \begin{figure*}
         \begin{tikzpicture}
             \node [name-dest] (box){%
                 \begin{minipage}{\textwidth}
+                \vspace{5pt}
                     \begin{multicols}{2}
 					#2
                   \end{multicols}
