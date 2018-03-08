@@ -107,6 +107,7 @@
 %indexing the passage names and highlighting them in some way the new command is simply \passage{}
 %If using passage in the caption environment - \protect\passage{} will work.
 %THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
+%Also, you can use \passage[|see{other}]{name} if you really want something specific like Mig see --Migovec for instance
 \usepackage{imakeidx}
 \DeclareDocumentCommand{\passage}{ O{}  m }{\textbf{\textsc{#2}}% 
 \index{#2!#1}}
@@ -118,10 +119,20 @@
 \newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
 \index[aut]{#1} \rmfamily}
 
+
+\definecolor{thirdblue}{cmyk}{0.97, 0.28, 0, 0.71}
+
+
+%A handy little command which takes inline text as argument and copies it in the margin as a snippet. Useful to highlight stuff and fill margins
+
+\newcommand{\bignote}[1]{\marginnote{\sffamily\normalsize{\textmd{\textit{\flushleft{\textcolor{thirdblue}{...#1...}}}}}%
+\rmfamily}#1}
+
+%Use mininame for authors in margin only tikzboxes, otherwise linespacing was changed by the larger font names.
 \newcommand{\mininame}[1]{\sffamily\small{\textbf{\textsl{\flushright{#1}}}}%
 \index[aut]{#1} \rmfamily}
 
-
+\renewcommand{\emph}[1]{\textit{#1}}
 
 %If caption runs at bottom of page - use pagefigure environment instead of figure* !
 \newenvironment{pagefigure}{% This enables the full width captions.
