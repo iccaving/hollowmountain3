@@ -1544,9 +1544,13 @@
   \sffamily%
   \begin{fullwidth}%
   \fontsize{16}{18}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklessauthor}}%
-  \vspace{11.5pc}%
-  \fontsize{18}{20}\selectfont\par\noindent\textcolor{bettergrey}{\allcaps{\thanklesstitle}}%
+  \vspace{8.5pc}%
+  \centering
+  \fontsize{25}{27}\selectfont\par\noindent\textcolor{bettergrey}{\allcaps{\thanklesstitle}}%
   \vfill%
+  \begin{figure*}
+  \frame{\includegraphics[width=\textwidth]{images/backgrounds/chris_rogers_migface.jpg}} \label{frontpage}
+  \end{figure*}
   \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
   \end{fullwidth}%
   }

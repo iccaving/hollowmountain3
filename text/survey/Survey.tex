@@ -188,4 +188,12 @@ Other softwares like the opensource \emph{QGIS} allow many types of georeference
 
 With the pursuit of speleology in mind, using the elevation data in conjunction with geological mapping can yield insights into cave system development and more rarely, potential. 
 
-An concrete example is the production of hillshades, or artificial illumination maps from a digital elevation model, which, as we have seen on maps \ref{map overlay}, \ref{map area n} and \ref{map area K}
+A common example of elevation data processing to produce visually appealing maps is \emph{hillshading}, or artificial illumination, which, as we have seen on maps \ref{map overlay}, \ref{map area n} and \ref{map area K} provide a qualitative appreciation of terrain. This is used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
+
+In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}.
+
+
+
+
+
+

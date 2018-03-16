@@ -109,7 +109,7 @@
 %THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
 %Also, you can use \passage[|see{other}]{name} if you really want something specific like Mig see --Migovec for instance
 \usepackage{imakeidx}
-\DeclareDocumentCommand{\passage}{ O{}  m }{\textbf{\textsc{#2}}% 
+\DeclareDocumentCommand{\passage}{ O{}  m }{\textsc{#2}% 
 \index{#2!#1}}
 \makeindex[columns=2] %this default index takes in all the passage names.
 
@@ -129,7 +129,7 @@
 \rmfamily}#1}
 
 %Use mininame for authors in margin only tikzboxes, otherwise linespacing was changed by the larger font names.
-\newcommand{\mininame}[1]{\sffamily\small{\textbf{\textsl{\flushright{#1}}}}%
+\newcommand{\mininame}[1]{\sffamily\footnotesize{\textbf{\textsl{\flushright{#1}}}}%
 \index[aut]{#1} \rmfamily}
 
 \renewcommand{\emph}[1]{\textit{#1}}
