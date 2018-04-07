@@ -81,6 +81,44 @@ Thus, over the course of a couple of days, the shaft was rigged for SRT, a way o
 \end{pagefigure}
 
 
+\begin{figure*}[h!]
+ \centering
+ \begin{tikzpicture}
+\node [table] (box){%
+    \begin{minipage}{\textwidth}
+\centering
+   \begin{tabular}{lrrrr}
+    Sector & \multicolumn{1}{l}{Passage name} & Survey length (m) & Stations & Average leg (m) \\ \midrule
+    \multirow{10}[0]{*}{Atlantis} & \multicolumn{1}{l}{At World's End} & 33.03 & 10    & 3.67 \\
+          & \multicolumn{1}{l}{Blast} & 289.26 & 37    & 8.04 \\
+          & \multicolumn{1}{l}{Choke-a-bloke} & 65.69 & 10    & 7.30 \\
+          & \multicolumn{1}{l}{Davy Jones Locker} & 55.04 & 16    & 3.67 \\
+          & \multicolumn{1}{l}{Empty Quarter} & 166.04 & 21    & 8.30 \\
+          & \multicolumn{1}{l}{Final Draft} & 92.27 & 13    & 7.69 \\
+          & \multicolumn{1}{l}{First Draft} & 77.18 & 16    & 5.15 \\
+          & \multicolumn{1}{l}{Jetstream} & 158.22 & 25    & 6.59 \\
+          & \multicolumn{1}{l}{Meridian Way} & 186.06 & 19    & 10.34 \\
+          & \multicolumn{1}{l}{Touching the Void's Bottom} & 23.36 & 9     & 2.92 \\ \midrule
+    Esoterica & \multicolumn{1}{l}{Isdead} & 10.26 & 4     & 3.42 \\ \midrule
+    Friendship Gallery & \multicolumn{1}{l}{Shithole} & 20.37 & 6     & 4.07 \\ \midrule
+    \multirow{3}[0]{*}{Miles Underground} & \multicolumn{1}{l}{Formative} & 30.98 & 6     & 6.20 \\
+          & \multicolumn{1}{l}{Lazarus} & 96.13 & 27    & 3.70 \\
+          & \multicolumn{1}{l}{True Adventures} & 270.03 & 53    & 5.19 \\ \midrule
+    \multirow{3}[0]{*}{Strap-on-the-Nitro} & \multicolumn{1}{l}{Andrea Bocelli} & 234   & 39    & 6.16 \\
+          & \multicolumn{1}{l}{Dinner Service} & 60.28 & 8     & 8.61 \\
+          & \multicolumn{1}{l}{Void} & 35.76 & 7     & 5.96 \\ \midrule
+    \multirow{2}[0]{*}{Xanadu} & \multicolumn{1}{l}{Agartha} & 131.85 & 33    & 4.12 \\
+          & \multicolumn{1}{l}{Push Your Luck} & 231.53 & 52    & 4.54 \\ \midrule
+          &       &       &       &  \\
+    \textbf{Total} &       & \textbf{2267.34} &       &  \\
+    \end{tabular}%
+  \label{tab:addlabel}%	
+  \end{minipage}
+  };
+\node[tabletitle, right=10pt] at (box.north west) {Number crunching};
+\end{tikzpicture}
+\end{figure*}
+
 \begin{figure*}[t!]
 \centering
 \frame{\includegraphics[height=\textheight]{"images/2015/other-finds-2015/2015plan".pdf}}
