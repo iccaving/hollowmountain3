@@ -17,7 +17,7 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 \usepackage{xparse}
-
+\usepackage{varioref}
 
 
 %____________Handling the fonts
@@ -119,6 +119,9 @@
 \newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
 \index[aut]{#1} \rmfamily}
 
+\newcommand{\figref}[1]{(Figure \protect\vref{#1})}
+
+\newcommand{\figpageref}[1]{(Figure \protect\ref{#1} on page \protect\pageref{1})}
 
 \definecolor{thirdblue}{cmyk}{0.97, 0.28, 0, 0.71}
 
