@@ -8,7 +8,7 @@
 
 
 %________________________PACKAGE ZONE
-
+\usepackage{amsmath,amssymb}
 %___________Handling the graphics, floats and captions
 \usepackage{grffile}
 \usepackage{graphicx}
@@ -17,7 +17,7 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 \usepackage{xparse}
-
+\usepackage{varioref}
 
 
 %____________Handling the fonts
@@ -49,9 +49,11 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 %_______REFERENCING
+\usepackage{imakeidx}
+\usepackage{cite}
 \usepackage{cleveref}
 \usepackage{hyperref}
-\usepackage{cite}
+
 
 
 %__________________________END OF PACKAGE ZONE
@@ -108,7 +110,7 @@
 %If using passage in the caption environment - \protect\passage{} will work.
 %THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
 %Also, you can use \passage[|see{other}]{name} if you really want something specific like Mig see --Migovec for instance
-\usepackage{imakeidx}
+
 \DeclareDocumentCommand{\passage}{ O{}  m }{\textsc{#2}% 
 \index{#2!#1}}
 \makeindex[columns=2] %this default index takes in all the passage names.
@@ -119,6 +121,9 @@
 \newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
 \index[aut]{#1} \rmfamily}
 
+\newcommand{\figref}[1]{(Figure \protect\vref{#1})}
+
+\newcommand{\figpageref}[1]{(Figure \protect\ref{#1} on page \protect\pageref{1})}
 
 \definecolor{thirdblue}{cmyk}{0.97, 0.28, 0, 0.71}
 
@@ -162,7 +167,7 @@
 %__________________Definition of the Tikz environments for side stories and fancy tables
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
-\usepackage{amsmath,amssymb}
+
 
 \tikzstyle{name-dest} = [	draw=bettergrey!80, 
 					fill=bettergrey!20, 
