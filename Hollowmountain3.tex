@@ -113,7 +113,7 @@
 \makeindex[columns=2] %this default index takes in all the passage names.
 
 \makeindex[name=aut, title =Authors, columns =1]
-\newcommand{\BH}[1]{\large\hyperpage{#1}\normalsize}
+\newcommand{\BH}[1]{\large\hyperpage{#1}\normalsize} %https://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
 
 \DeclareDocumentCommand{\passage}{ O{}  m }{\textsc{#2}% 
 \index{#2!#1|BH}}
@@ -121,7 +121,7 @@
 
 
 \newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
-\index[aut]{#1} \rmfamily}
+\index[aut]{#1|BH} \rmfamily}
 
 \newcommand{\figref}[1]{(Figure \protect\vref{#1})}
 
