@@ -17,7 +17,7 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 \usepackage{xparse}
-\usepackage{varioref}
+
 
 
 %____________Handling the fonts
@@ -49,12 +49,12 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 %_______REFERENCING
-\usepackage{imakeidx}
+
 \usepackage{cite}
-\usepackage{cleveref}
+%\usepackage{cleveref}
 \usepackage{hyperref}
-
-
+\usepackage{varioref}
+\usepackage{imakeidx}
 
 %__________________________END OF PACKAGE ZONE
 
@@ -110,12 +110,14 @@
 %If using passage in the caption environment - \protect\passage{} will work.
 %THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
 %Also, you can use \passage[|see{other}]{name} if you really want something specific like Mig see --Migovec for instance
-
-\DeclareDocumentCommand{\passage}{ O{}  m }{\textsc{#2}% 
-\index{#2!#1}}
 \makeindex[columns=2] %this default index takes in all the passage names.
 
 \makeindex[name=aut, title =Authors, columns =1]
+\newcommand{\BH}[1]{\large\hyperpage{#1}\normalsize}
+
+\DeclareDocumentCommand{\passage}{ O{}  m }{\textsc{#2}% 
+\index{#2!#1|BH}}
+
 
 
 \newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
