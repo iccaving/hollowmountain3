@@ -1683,21 +1683,21 @@
 \ifthenelse{\boolean{@tufte@toc}}{%
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
-    {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\sffamily\itshape} % above (global formatting of entry)
+    {\vspace{1.5\baselineskip}\begin{fullwidth}\Large\rmfamily\bf} % above (global formatting of entry)
     {\contentslabel{2em}} % before w/label (label = ``II'')
     {} % before w/o label
     {\sffamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{chapter}%
     [0em] % distance from left margin
-    {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\sffamily\itshape} % above (global formatting of entry)
-    {\hspace*{0em}\contentslabel{2em}} % before w/label (label = ``2'')
-    {\hspace*{0em}} % before w/o label
+    {\vspace{1.5\baselineskip}\begin{fullwidth}\color{ultramarine}\large\sffamily} % above (global formatting of entry)
+    {\hspace*{1em}\contentslabel{2em}} % before w/label (label = ``2'')
+    {\hspace*{1em}} % before w/o label
     {\sffamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{section}% FIXME
     [0em] % distance from left margin
-    {\vspace{0\baselineskip}\begin{fullwidth}\Large\sffamily\itshape} % above (global formatting of entry)
+    {\vspace{0\baselineskip}\begin{fullwidth}\color{steelygrey}\normalsize\sffamily\itshape} % above (global formatting of entry)
     {\hspace*{2em}\contentslabel{2em}} % before w/label (label = ``2.6'')
     {\hspace*{2em}} % before w/o label
     {\sffamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
@@ -1705,8 +1705,8 @@
   \titlecontents{subsection}% FIXME
     [0em] % distance from left margin
     {\vspace{0\baselineskip}\begin{fullwidth}\large\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{4em}\contentslabel{4em}} % before w/label (label = ``2.6.1'')
-    {\hspace*{4em}} % before w/o label
+    {\hspace*{3em}\contentslabel{4em}} % before w/label (label = ``2.6.1'')
+    {\hspace*{3em}} % before w/o label
     {\sffamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{paragraph}% FIXME
