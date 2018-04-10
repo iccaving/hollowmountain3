@@ -1683,7 +1683,7 @@
 \ifthenelse{\boolean{@tufte@toc}}{%
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
-    {\vspace{1.5\baselineskip}\begin{fullwidth}\Large\rmfamily\bf} % above (global formatting of entry)
+    {\vspace{1.5\baselineskip}\begin{fullwidth}\Large\rmfamily\bfseries} % above (global formatting of entry)
     {\contentslabel{2em}} % before w/label (label = ``II'')
     {} % before w/o label
     {\sffamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)

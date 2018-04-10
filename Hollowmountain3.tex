@@ -141,9 +141,9 @@
 
 %If caption runs at bottom of page - use pagefigure environment instead of figure* !
 \newenvironment{pagefigure}{% This enables the full width captions.
-    \begin{figure*}[b]
+    \protect\begin{figure*}[b]
     \classiccaptionstyle
-  }{\end{figure*}}
+  }{\protect\end{figure*}}
 
 %_____________________Definition of the color box environment for the main title pages...
 \usepackage[most]{tcolorbox}
