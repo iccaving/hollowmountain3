@@ -31,3 +31,29 @@
     \let\caption\@tufte@orig@caption%
     \let\label\@tufte@orig@label}
 \makeatother
+
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[
+    fileext=los,
+    listname={List of Surveys},
+    name=Survey,
+    placement=tbhp,
+    within=none,
+]{survey}
+
+\newenvironment{pagesurvey}{% This enables the full width captions.
+    \protect\begin{survey*}[b]
+    \classiccaptionstyle
+  }{\protect\end{survey*}}
+
+\DeclareFloatingEnvironment[
+    fileext=lom,
+    listname={List of Maps},
+    name=Map,
+    placement=tbhp,
+    within=none,
+]{map}
+\newenvironment{pagemap}{% This enables the full width captions.
+    \protect\begin{map*}[b]
+    \classiccaptionstyle
+  }{\protect\end{map*}}
