@@ -1141,6 +1141,24 @@
 
 
 %%
+% Margin map environment
+
+\newenvironment{marginmap}[1][-1.2ex]%
+  {\begin{@tufte@margin@float}[#1]{map}}
+  {\end{@tufte@margin@float}}
+
+%%
+% Margin survey environment
+
+\newenvironment{marginsurvey}[1][-1.2ex]%
+  {\begin{@tufte@margin@float}[#1]{survey}}
+  {\end{@tufte@margin@float}}
+
+
+
+
+
+%%
 % Auto-detects the proper text alignment based on the various class options
 
 \newcommand*{\@tufte@justification@autodetect}{%
