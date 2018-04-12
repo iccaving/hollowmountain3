@@ -17,9 +17,11 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 \usepackage{xparse}
+\usepackage[margin]{fancyref}
 
-
-
+\frefformat{margin}{\fancyrefseclabelprefix}{% 
+ 	more information #3%
+}%
 %____________Handling the fonts
 \usepackage[utf8]{inputenc}
 
