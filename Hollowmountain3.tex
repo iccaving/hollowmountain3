@@ -57,9 +57,8 @@
 \usepackage{hyperref}
 \usepackage{varioref}
 \usepackage{imakeidx}
-\usepackage{glossaries}
 
-\makeglossaries
+
 %__________________________END OF PACKAGE ZONE
 
 %___________manual override of the numbering and listing in the table of contents: number down to parts, list down to sections.
@@ -245,7 +244,6 @@
 %___________________START OF THE DOCUMENT: CONTENT ADDED UNDERNEATH				
 
 \begin{document}
-\include{text/hall-of-fame}
 \maketitle %Title page
 
 \justify
@@ -285,6 +283,7 @@
 	\bibliographystyle{apalike}
 	\bibliography{biblio_hm3}
 
+	\include{hall-of-fame}
 	\include{text/other_tex_files/Post-script}
 
 \end{document}
