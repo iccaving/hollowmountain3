@@ -32,9 +32,9 @@ for i in range(len(your_list)):
 		hall_of_fame.write('%s %s: \\textsl{'% (your_list[i][1],your_list[i][0]))
 		k=0
 		for h in range(2,len(your_list[i])):	
-			if your_list[i][h] != 'no':			
+			if your_list[i][h] != 'n':			
 				k+=1
-				if k != len(your_list[i]) - your_list[i].count('no') - 2:
+				if k != len(your_list[i]) - your_list[i].count('n') - 2:
 					hall_of_fame.write('%s, ' % (your_list[i][h]))
 				else:
 					hall_of_fame.write('%s }\n' % (your_list[i][h]))
