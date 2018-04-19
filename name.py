@@ -26,7 +26,7 @@ hall_of_fame.write('\\begin{fullwidth} \\chapter{Hall of Fame} \n')
 hall_of_fame.write('\n')
 hall_of_fame.write('Here follows a non-exhaustive list of the members involved in the exploration of \\passage{Tolminski Migovec} during the last five expeditions. Please forgive any omissions \n')
 hall_of_fame.write('\n')
-hall_of_fame.write('\\begin{multicols}{2} \\\\ \n')
+hall_of_fame.write('\\begin{multicols}{2} \n')
 for i in range(len(your_list)):
 	k=0
 	if i != 0:
