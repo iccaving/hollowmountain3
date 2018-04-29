@@ -57,3 +57,161 @@
     \protect\begin{map*}[b]
     \classiccaptionstyle
   }{\protect\end{map*}}
+
+
+
+
+%____________________ MORE FORMATTING OPTIONS
+
+
+%indexing the passage names and highlighting them in some way the new command is simply \passage{}
+%If using passage in the caption environment - \protect\passage{} will work.
+%THis also takes an optional argument \passage[detail]{name} if you want to refer to e.g. Primadona abseil, instead of cave, or entrance in the index. 
+%Also, you can use \passage[|see{other}]{name} if you really want something specific like Mig see --Migovec for instance
+
+
+
+
+\newcommand{\name}[1]{\sffamily\normalsize{\textbf{\textsl{\flushright{#1}}}}%
+\index[aut]{#1|BH} \rmfamily}
+
+\newcommand{\figref}[1]{(Figure \protect\vref{#1})}
+\newcommand{\mapref}[1]{(Map \protect\vref{#1})}
+
+\newcommand{\figpageref}[1]{(Figure \protect\ref{#1} on page \protect\pageref{1})}
+
+\definecolor{thirdblue}{cmyk}{0.97, 0.28, 0, 0.71}
+
+
+%A handy little command which takes inline text as argument and copies it in the margin as a snippet. Useful to highlight stuff and fill margins
+
+\newcommand{\bignote}[1]{\marginnote{\sffamily\normalsize{\textmd{\textit{\flushleft{\textcolor{thirdblue}{...#1...}}}}}%
+\rmfamily}#1}
+
+%Use mininame for authors in margin only tikzboxes, otherwise linespacing was changed by the larger font names.
+\newcommand{\mininame}[1]{\sffamily\footnotesize{\textbf{\textsl{\flushright{#1}}}}%
+\index[aut]{#1} \rmfamily}
+
+\renewcommand{\emph}[1]{\textit{#1}}
+
+%If caption runs at bottom of page - use pagefigure environment instead of figure* !
+\newenvironment{pagefigure}{% This enables the full width captions.
+    \protect\begin{figure*}[b]
+    \classiccaptionstyle
+  }{\protect\end{figure*}}
+
+%_____________________Definition of the color box environment for the main title pages...
+\usepackage[most]{tcolorbox}
+
+\tcbset{    frame code={}
+            center title,
+            left=10pt,
+            right=10pt,
+            top=-50pt,
+            bottom=10pt,
+            colback=white,
+            colframe=white,
+        width=\dimexpr\textwidth\relax,
+            enlarge left by=0mm,
+            boxsep=5pt,
+            arc=0pt,outer arc=0pt,
+            opacityback=0.7
+        }
+        
+
+%__________________Definition of the Tikz environments for side stories and fancy tables
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes}
+
+
+\tikzstyle{name-dest} = [   draw=bettergrey!80, 
+                    fill=bettergrey!20, 
+                    thick,
+                    rectangle, 
+                    rounded corners, 
+                    inner sep=5pt, 
+                    inner ysep=10pt
+                    ]
+                    
+\tikzstyle{fancytitle} =     [  font=\sffamily\large, 
+                    fill=bettergrey,
+                    text=white
+                    ]
+
+\tikzstyle{table} = [       draw={ultramarine!80},
+                    fill={ultramarine!20},
+                    thick,
+                    rectangle, 
+                    rounded corners, 
+                    inner sep=5pt, 
+                    inner ysep=10pt
+                    ]
+                    
+\tikzstyle{tabletitle} = [  font=\sffamily\large,
+                    fill={ultramarine!80},
+                    text=white
+                    ]
+                    
+\newcommand{\margininbox}[2]{
+                        \begin{marginfigure}
+                        \begin{tikzpicture}
+                        \node [name-dest] (box){%
+                            \begin{minipage}{0.9\textwidth}
+                            \vspace{5pt}
+                            #2
+                            \end{minipage}
+                        };
+                        \node[fancytitle, right=10pt] at (box.north west) {#1};
+                        \end{tikzpicture}
+                        \end{marginfigure}
+}
+
+
+
+\newcommand{\fullwidthbox}[2]{
+   \begin{figure*}[t!]        
+        \begin{tikzpicture}
+            \node [name-dest] (box){%
+                \begin{minipage}{\textwidth}
+                \vspace{5pt}
+                    \begin{multicols}{2}
+                    #2
+                  \end{multicols}
+                \end{minipage}
+            };
+            \node[fancytitle, right=10pt] at (box.north west) {#1};
+        \end{tikzpicture}
+    \end{figure*}
+}
+
+%__________________End of the definition of: Tikz environments for side stories and fancy tables    
+
+%____________________THE TWO PAGE BACKGROUND MACRO (from:https://tex.stackexchange.com/questions/23860/how-to-include-a-picture-over-two-pages-left-part-on-left-side-right-on-right).
+\usepackage{adjustbox}
+\usepackage{afterpage}
+\usepackage{placeins}
+
+
+\setcounter{totalnumber}{1}
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\renewcommand{\topfraction}{.99}
+\renewcommand{\bottomfraction}{.99}
+\renewcommand{\textfraction}{.01}
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+\fancypagestyle{endchapter}{%
+  \fancyhf{}% Clear header/footer
+  \fancyfoot[OR]{\textbf{\thepage}}%
+  \fancyfoot[EL]{\textbf{\thepage}}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+%changing the spacing of itemize (also ...)
+\usepackage{enumitem}
+\newcommand{\localtextbulletone}{\textcolor{bettergrey}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+\newenvironment{citemize}{\begin{itemize}[itemsep=0.25ex,leftmargin=1cm, rightmargin=1cm, label=\localtextbulletone]}{\end{itemize}}
