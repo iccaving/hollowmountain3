@@ -18,7 +18,7 @@ The following article is an extension and update  on `The Survey Project' (The H
 \centering
  \frame{\includegraphics[width=\linewidth]{"images/survey/jarv-pss".jpg}} 
  \caption{A Permanent Survey Station is left at one of the Junctions in the cave, here detailing the updates at the pushing fronts ---Jarvist Frost}
- \label{PSS}
+ \label{fig:PSS}
 \end{marginfigure}
 
 
@@ -175,9 +175,16 @@ The instructions text file gets longer, and more complicated every year: it is t
 \subsection{Making the final maps}
 With a Vector Graphics Software package, it is possible to import the main line survey.The cave outline, passage walls, presence of water cascades can then be drawn around the skeleton to convey an idea of scale for the various caverns and pitches inside the cave.
 
+\begin{marginsurvey}
+\frame{\includegraphics[width = \linewidth]{images/maps/EE_excerpt.png}}
+\caption{An example of Extended Elevation survey production} \label{fig:example}
+\end{marginsurvey}
+
 By working with a cascade of well-organised layers, it is possible to hide or lock off several regions of the cave; each new addition comes under a different year label or region file. This drawing of the cave occurs after the end of an expedition, when all the grade 1 surveys drawn inside the cave or inside the bivi logbook are brought together at a survey meeting in the UK.
 
-All newly added passage is duly annotated and labelled on plan and elevation and finally a scaled map and elevation of the cave system is submitted to the Slovene government in order to update its \emph{kataster} database. A copy can be found on the Imperial College website.
+All newly added passage is duly annotated and labelled on plan and elevation and finally a scaled map and elevation of the cave system is submitted to the Slovene government in order to update its \emph{kataster} database. A copy can be found on the Imperial College website. \begin{verbatim} https://union.ic.ac.uk/rcc/caving/slovenia/  \end{verbatim},
+
+
 
 \subsection{Geographical Information Systems}
 \emph{Geographical Information Systems (GIS) enable the storage, display and edition of geographic information.} 
@@ -188,9 +195,32 @@ Other softwares like the opensource \emph{QGIS} allow many types of georeference
 
 With the pursuit of speleology in mind, using the elevation data in conjunction with geological mapping can yield insights into cave system development and more rarely, potential. 
 
-A common example of elevation data processing to produce visually appealing maps is \emph{hillshading}, or artificial illumination, which, as we have seen on maps \ref{map overlay}, \ref{map area n} and \ref{map area K} provide a qualitative appreciation of terrain. This is used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
+A common example of elevation data processing to produce visually appealing maps is \emph{hillshading}, or artificial illumination, which, as seen on the topographical maps within in this volume \fref{map:map overlay}, \fref{map:map area K},\fref{map:map area n} provide a qualitative appreciation of terrain. This is used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
 
-In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}.
+In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}. The workflow for the production of hillshaded maps is as follows:
+\begin{citemize}
+\item gathering XYZ data
+\item computing the gradient of the elevation z in xy directions.
+\item calculating a slope and aspect map using the gradient field
+\item calculating and rescaling to 0-255 the artificial illumination component.
+\item display.
+\end{citemize}
+
+\begin{pagemap}
+\centering
+\begin{subfigure}{0.76\linewidth}
+\includegraphics[width = \textwidth]{images/maps/slopemap.png}
+\subcaption{ } \label{slope}
+\end{subfigure}
+
+\begin{subfigure}{0.76\linewidth}
+\includegraphics[width = \textwidth]{images/maps/aspectmap.png}
+\subcaption{ } \label{aspect}
+\end{subfigure}
+
+\caption[Slope and Aspect maps]{Examples of  \emph{(top)} slope and  \emph{(bottom)} aspect maps generated from simple elevation data. }
+\end{pagemap}
+
 
 
 
