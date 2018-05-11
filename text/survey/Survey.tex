@@ -22,8 +22,14 @@ The following article is an extension and update  on `The Survey Project' (The H
 \end{marginfigure}
 
 
-\subsection{Data collection and storage}
-The skeleton of the survey project is the \emph{main line}, a 3D model which links several thousand nodes or \emph{stations}. Each station is linked to one or several neighbours by a distance, inclination angle and azimuth. These quantities are measured in the cave with the aid of tape measure or laster range-finder, inclinometer and compass respectively. Additionally, \emph{splay} legs in the plane normal to line of sight are measured: they indicate the distance to cave passage walls from the survey station of interest; they do not come into the cave passage length tally. \emph{Permanent Survey Stations} or PSS's are those stations where an easily found physical landmark (such as a cairn), together with descriptive, waterproof paper label exists inside the cave: these are used to `tie in' new parts of the mainline survey.
+\section{Data collection and storage}
+The skeleton of the survey project is the \emph{main line}, a 3D model which links several thousand nodes or \emph{stations}. 
+
+Ordinarily, a station is chosen as the origin, and the spherical coordinates of each neighbouring station or node are measured in the cave: they consist of distance, inclination angle and azimuth. 
+
+Practically, they are measured with the aid of tape measure or laster range-finder, inclinometer and compass respectively. Additionally, \emph{splay} legs are often measured: they indicate the distance to cave passage walls from the survey station of interest and do not come into the cave passage length tally; however they prove invaluable when fleshing out the cave passage geometry around survey nodes.
+
+ \emph{Permanent Survey Stations} or PSS's are those stations where an easily found physical landmark (such as a cairn), together with descriptive, waterproof paper label exists inside the cave: these are used to `tie in' new parts of the mainline survey.
 
 It is usual for a pair of cavers to conduct the survey by assigning the data logging to one, and instrument reading to the other. By calling out the measurements in a clear, well detached and unambiguous manner, we are able to minimise the number of typographical errors. The data is entered in pencil on waterproof logbooks (A6 format) and details for each line:
 
@@ -100,21 +106,63 @@ Over the years, we have divided the cave into different systems (\emph{Vrtnarija
 \end{figure*}
 
 
+\tdplotsetmaincoords{60}{150}
+%
+\pgfmathsetmacro{\rvec}{.9}
+\pgfmathsetmacro{\myrvec}{0.3}
+\pgfmathsetmacro{\thetavec}{-30}
+\pgfmathsetmacro{\phivec}{-60}
+%
 
-\subsection{Processing and displays}
-When the data is processed on the terminal,  \begin{verbatim} cavern pathto/asurvexfile.svx \end{verbatim} 
 
-each \emph{station} is prefixed by the name of the enclosing file or folder, therefore station 4 of \passage{Stranglehold} becomes stranglehold.4. This enables the station to be called and equated to another node to tie the survey together. 
 
-Survex begins its work with a fixed point or origin and assigns it cartesian coordinates of  $(0;0;0)$. All other station coordinates in the survey file are calculated in series, relative to the origin. In case there is an indicated loop, survex distributes the error evenly across all the measured legs in the loop and this is recorded in an error log. Each individual file is processed separately before it is appended to a master, regional file such as \emph{Primadona.svx}. There, a PSS from a previous survey can be equated to a station in the new file, and a new process begins:
+
+\section{Processing and displays}
+When the data is processed on the terminal, each \emph{station} is prefixed by the name of the enclosing file or folder. 
+
+ \begin{verbatim} cavern pathto/asurvexfile.svx \end{verbatim} 
+
+Therefore station 4 of \passage{Stranglehold} becomes stranglehold.4. This enables the station to be called and equated to another node to tie the survey together. 
+
+\begin{marginfigure}
+\begin{tikzpicture}[scale=4,tdplot_main_coords]
+    \coordinate (O)  at (0,0,0);
+    \draw[thick,->] (0,0,0) -- (-1,0,0) node[anchor=south west]{$N_{mag}$};
+    \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$E$};
+\draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+    \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+    \tdplotsetcoord{Pmid}{\myrvec}{\thetavec}{\phivec}
+    \draw[-stealth] (O) node[left] {$S_k$} -- (P) node[above right] {$S_n$};
+    \draw[draw = none] (O) -- (Pmid) node[above left] {r};
+    \draw[dashed, color=red] (O) -- (Pxy);
+    \draw[dashed, color=red] (P) -- (Pxy);
+    \tdplotdrawarc{(O)}{0.2}{180+\phivec}{180}{anchor=west}{$\phi$}
+    \tdplotsetthetaplanecoords{\phivec}
+    \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.35}{-90}{\thetavec}%
+        {anchor=south west}{$\theta$}
+
+
+\end{tikzpicture}
+\caption{Spherical coordinates measured inside the cave. $r$ is the distance between nodes in metres, $\theta$ is the inclination angle (\textdegree), $\phi$ is the azimuth in degrees, measured clockwise from north. Note the left-hand rule for this coordinate system.}
+\end{marginfigure}
+
+Survex begins building the mainline at a fixed origin  $(0;0;0)$.
+
+Simple trigonometry allows that for two connected stations $S_n$ and $S_k$:
+$$x_{n} = x_{k}+ r \cos\phi\cos\theta $$
+$$y_{n} = y_{k}+ r \sin\phi\cos\theta $$
+$$z_{n} = z_{k}+ r \sin\theta$$
+
+ All other station coordinates in the survey file are calculated in series, relative to the origin. In case there is an indicated loop, survex distributes the error evenly across all the measured legs in the loop and this is recorded in an error log. Each individual file is processed separately before it is appended to a master, regional file such as \emph{Primadona.svx}. There, a PSS from a previous survey can be equated to a station in the new file, and a new process begins:
 \begin{itemize}
 \item Calculating and redistributing the errors on trans-file loops when a major connection is made
 \item Correcting for each year's magnetic declination variations, (several degrees for just a decade difference)
 \item checking splays and flagging up re-surveyed legs 
 \end{itemize}
 
-
 The output of the processing is an \emph{.3d} file displayed in \emph{Aven} software. The end product is essentially a line mesh coloured by either depth, date of exploration or loop closure error; this can be rotated 360° in the horizontal plane, 180° from top-down to bottom-up in a vertical plane. Given a surface elevation model, one can also manually check the distance from a node to the surface, or from node to node. One advantage of processing the survey datasets very early on is that the sorts of queries such as `how close are these two passages' determine the orientation of exploration during the expedition; answering them right away enables connection efforts and fuel most of the heated evening discussions about where to explore next.
+
+In fact, the 3D viewer aven often quotes a vertical and horizontal separation between any two stations of the plot.
 
 \begin{marginfigure}
 \checkoddpage \ifoddpage \forcerectofloat \else \forceversofloat \fi
@@ -124,19 +172,9 @@ The output of the processing is an \emph{.3d} file displayed in \emph{Aven} soft
  \label{surveying colony}
 \end{marginfigure}
 
-The main deliverable from \emph{Aven} is undoubtedly the main line; the plan view projection thereof can exported into a vector graphics software like \emph{Inkscape}. The elevation view is more intuitive because Sistem Migovec is predominantly a vertical cave system; however, a simple projection is of limited use when it comes to drawing cave passage walls around the main line. The overlapping vertical shaft series blur into one, and labelling each passage becomes an issue. Finally, the projection distorts most the horizontal length of passages near parallel with the line of sight.
+The main deliverable from \emph{Aven} is undoubtedly the main line; the plan view projection thereof can exported into a vector graphics software like \emph{Inkscape}. The elevation view is more intuitive because Sistem Migovec is predominantly a vertical cave system; however, a simple projection is of limited use when it comes to drawing cave passage walls around the main line. The overlapping vertical shaft series blur into one, and labelling each passage becomes an issue. Finally the horizontal distance of passages parallel with line of sight is greatly underestimated.
 
 To overcome this problem, we produce an \emph{extended elevation}, where starting from a reference point (the cave entrance of \passage{Vrtnarija} in our case), the survey legs are unfolded into one vertical plane. The distance from station to station, and inclination angle between remain unchanged, only the azimuth is changed to either N, or S (left or right on the plane). 
-
-The major consequence of this operation is that the distance between non-adjacent nodes is no longer reflected on the visualisation software. As a corollary, long or complex loops are sometimes broken and completely unfolded. To meet the needs of the user, whether it is greater topological accuracy or the aesthetically pleasing distribution of passages on a page, it is possible to write instructions for the extension process and force a series of passage in a certain direction.
-
- 
-
-This is done via the following terminal command:
-\begin{verbatim}
-/Applications/survex/extend --specfile=instructions.dat 
-   pathto/Avenfile.3d  pathto/extendedAvenfile.3d
-\end{verbatim}
 
 \begin{marginfigure}
  \checkoddpage \ifoddpage \forcerectofloat \else \forceversofloat \fi
@@ -159,6 +197,21 @@ This is done via the following terminal command:
 \end{tikzpicture}
 \end{marginfigure}
 
+The major consequence of this operation is that the distance between non-adjacent nodes is no longer reflected on the visualisation software. As a corollary, long or complex loops are sometimes broken and completely unfolded. To meet the needs of the user, whether it is greater topological accuracy or the aesthetically pleasing distribution of passages on a page, it is possible to write instructions for the extension process and force a series of passage in a certain direction.
+
+ 
+
+This is done via the following terminal command:
+\begin{verbatim}
+/Applications/survex/extend --specfile=instructions.dat 
+   pathto/Avenfile.3d  pathto/extendedAvenfile.3d
+\end{verbatim}
+
+\begin{marginsurvey}
+\frame{\includegraphics[width = \linewidth]{images/maps/EE_excerpt.png}}
+\caption{An example of Extended Elevation survey production} \label{fig:example}
+\end{marginsurvey}
+
 creating a new, \emph{Aven} compatible .3d file, which can in turn be exported to a vector graphics software.
 
 The instructions text file gets longer, and more complicated every year: it is the result of trial and error and a mixture of personal taste for where a passage should be and practical drawing considerations. 
@@ -172,13 +225,10 @@ The instructions text file gets longer, and more complicated every year: it is t
 \end{figure*}
 
 
-\subsection{Making the final maps}
+\section{Making the final maps}
 With a Vector Graphics Software package, it is possible to import the main line survey.The cave outline, passage walls, presence of water cascades can then be drawn around the skeleton to convey an idea of scale for the various caverns and pitches inside the cave.
 
-\begin{marginsurvey}
-\frame{\includegraphics[width = \linewidth]{images/maps/EE_excerpt.png}}
-\caption{An example of Extended Elevation survey production} \label{fig:example}
-\end{marginsurvey}
+
 
 By working with a cascade of well-organised layers, it is possible to hide or lock off several regions of the cave; each new addition comes under a different year label or region file. This drawing of the cave occurs after the end of an expedition, when all the grade 1 surveys drawn inside the cave or inside the bivi logbook are brought together at a survey meeting in the UK.
 
@@ -186,8 +236,8 @@ All newly added passage is duly annotated and labelled on plan and elevation and
 
 
 
-\subsection{Geographical Information Systems}
-\emph{Geographical Information Systems (GIS) enable the storage, display and edition of geographic information.} 
+\section{Geographical Information Systems}
+\marginnote{Geographical Information Systems (GIS) enable the storage, display and edition of geographic information.} 
 
 Cave entrances, with coordinates, elevation and name are instances of point data with attributes. The centrelines or main line surveys are instances of polyline data, which can be queried in several ways: the \emph{Aven} software for example enables a cursory investigation of spatial relationships between different caves, or between the cave and some surface.
 
@@ -203,7 +253,6 @@ In practice, in 8-bit images, a digital number between $0-255$ is assigned to ea
 \item computing the gradient of the elevation z in xy directions.
 \item calculating a slope and aspect map using the gradient field
 \item calculating and rescaling to 0-255 the artificial illumination component.
-\item display.
 \end{citemize}
 
 \begin{pagemap}
