@@ -176,6 +176,16 @@ The main deliverable from \emph{Aven} is undoubtedly the main line; the plan vie
 
 To overcome this problem, we produce an \emph{extended elevation}, where starting from a reference point (the cave entrance of \passage{Vrtnarija} in our case), the survey legs are unfolded into one vertical plane. The distance from station to station, and inclination angle between remain unchanged, only the azimuth is changed to either N, or S (left or right on the plane). 
 
+
+\begin{figure*}[t!]
+ \checkoddpage \ifoddpage \forcerectofloat \else \forceversofloat \fi
+\centering
+\frame{\includegraphics[width=\textwidth]{"images/maps/mig".png}}
+\caption{A projection of the Migovec Cave System and LiDAR terrain data viewed in \emph{Aven}}
+\label{projection}
+\end{figure*}
+
+
 \begin{marginfigure}
  \checkoddpage \ifoddpage \forcerectofloat \else \forceversofloat \fi
  \centering
@@ -216,13 +226,7 @@ creating a new, \emph{Aven} compatible .3d file, which can in turn be exported t
 
 The instructions text file gets longer, and more complicated every year: it is the result of trial and error and a mixture of personal taste for where a passage should be and practical drawing considerations. 
 
-\begin{figure*}[t!]
- \checkoddpage \ifoddpage \forcerectofloat \else \forceversofloat \fi
-\centering
-\frame{\includegraphics[width=\textwidth]{"images/survey/projection".png}}
-\caption{projections of the line survey}
-\label{projection}
-\end{figure*}
+
 
 
 \section{Making the final maps}
@@ -247,13 +251,8 @@ With the pursuit of speleology in mind, using the elevation data in conjunction 
 
 A common example of elevation data processing to produce visually appealing maps is \emph{hillshading}, or artificial illumination, which, as seen on the topographical maps within in this volume \fref{map:map overlay}, \fref{map:map area K},\fref{map:map area n} provide a qualitative appreciation of terrain. This is used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
 
-In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}. The workflow for the production of hillshaded maps is as follows:
-\begin{citemize}
-\item gathering XYZ data
-\item computing the gradient of the elevation z in xy directions.
-\item calculating a slope and aspect map using the gradient field
-\item calculating and rescaling to 0-255 the artificial illumination component.
-\end{citemize}
+In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}. 
+
 
 \begin{pagemap}
 \centering
@@ -267,7 +266,7 @@ In practice, in 8-bit images, a digital number between $0-255$ is assigned to ea
 \subcaption{ } \label{aspect}
 \end{subfigure}
 
-\caption[Slope and Aspect maps]{Examples of  \emph{(top)} slope and  \emph{(bottom)} aspect maps generated from simple elevation data. }
+\caption[Slope and Aspect maps]{Examples of  \emph{(top)} slope and  \emph{(bottom)} aspect maps generated from simple elevation data. The area is 1km x 1km over \protect\passage{Tolminksi Kuk} --- Slovenia National Grid EPSG 3794}
 \end{pagemap}
 
 
