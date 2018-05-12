@@ -22,11 +22,9 @@ print your_list
 
 
 hall_of_fame = open('hall-of-fame.tex','w')
-hall_of_fame.write('\\begin{fullwidth} \\chapter{Hall of Fame} \n')
-hall_of_fame.write('\n')
-hall_of_fame.write('Here follows a non-exhaustive list of the members involved in the exploration of \\passage{Tolminski Migovec} during the last five expeditions. Please forgive any omissions \n')
-hall_of_fame.write('\n')
-hall_of_fame.write('\\begin{multicols}{2} \n')
+hall_of_fame.write('\\begin{tcolorbox}\n'+'\\begin{fullwidth} \n'+'\\chapter{Hall of Fame} \n')
+hall_of_fame.write('\n Here follows a non-exhaustive list of the members involved in the exploration of \\passage{Tolminski Migovec} during the last five expeditions. Please forgive any omissions \n')
+hall_of_fame.write('\n \\begin{multicols}{2} \n')
 for i in range(len(your_list)):
 	k=0
 	if i != 0:
@@ -45,5 +43,5 @@ for i in range(len(your_list)):
 						hall_of_fame.write('%s }\n' % (your_list[i][h]))
 						hall_of_fame.write('\\newline\n')
 
-hall_of_fame.write('\\end{multicols} \\end{fullwidth} \n')
+hall_of_fame.write('\\end{multicols} \n \\end{fullwidth} \n \\end{tcolorbox} \n')
 hall_of_fame.close()
