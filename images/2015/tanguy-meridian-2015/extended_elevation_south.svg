@@ -16,7 +16,10 @@
    width="280.11902"
    height="160.73454"
    viewBox="0 0 280.11902 160.73455"
-   sodipodi:docname="extended_elevation_south.svg">
+   sodipodi:docname="extended_elevation_south.svg"
+   inkscape:export-filename="/Users/AchilleTalon/Documents/GitHub/hollowmountain3/images/2015/tanguy-meridian-2015/extended_elevation_south.png"
+   inkscape:export-xdpi="249.8"
+   inkscape:export-ydpi="249.8">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -87,9 +90,9 @@
      inkscape:window-height="775"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="7.7781746"
-     inkscape:cx="158.83839"
-     inkscape:cy="86.951873"
+     inkscape:zoom="2.75"
+     inkscape:cx="158.36822"
+     inkscape:cy="44.460527"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -484,4 +487,21 @@
      id="path4685"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cc" />
+  <text
+     sodipodi:linespacing="125%"
+     id="use4687"
+     y="33.267349"
+     x="29.59137"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.5px;line-height:125%;font-family:Seravek;-inkscape-font-specification:Seravek;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;font-family:Seravek;-inkscape-font-specification:Seravek"
+       y="33.267349"
+       x="29.59137"
+       id="tspan4691"
+       sodipodi:role="line">N &lt;--&gt; S</tspan><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Seravek;-inkscape-font-specification:Seravek"
+       id="tspan4693"
+       y="42.642349"
+       x="29.59137"
+       sodipodi:role="line" /></text>
 </svg>
