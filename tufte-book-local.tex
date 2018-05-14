@@ -72,7 +72,7 @@
 
 
 
-\newcommand{\name}[1]{\vskip2ex\nopagebreak{\raggedleft\large\sffamily\textbf{#1}\par} \index[aut]{#1|BH} \rmfamily}
+\newcommand{\name}[1]{\vskip1ex\nopagebreak{\raggedleft\large\sffamily\textbf{#1}\par \vskip1ex} \index[aut]{#1|BH} \rmfamily}
 
 \newcommand{\figref}[1]{(Figure \protect\vref{#1})}
 \newcommand{\mapref}[1]{(Map \protect\vref{#1})}
@@ -140,8 +140,18 @@
                     draw = thirdblue
                     ]
 
+\tikzstyle{logbook-logo} = [  font=\sffamily\large, 
+                    fill=bettergrey,
+                    rectangle,
+                    rounded corners,
+                    draw = bettergrey
+                    ]
+
+
 \newcommand{\ladle}{\protect\includegraphics[height = 4ex]{images/little_insets/ladle.png}}
-\newcommand{\helmet}{\protect\includegraphics[height = 4ex]{images/little_insets/helmet.png}}
+\newcommand{\logbook}{\protect\includegraphics[height = 4ex]{images/little_insets/logbook.png}}
+\newcommand{\explo}{\protect\includegraphics[height = 4ex]{images/little_insets/helmet.png}}
+\newcommand{\calc}{\protect\includegraphics[height = 4ex]{images/little_insets/calc.png}}
 \newcommand{\recipecorner}[2]{
                         \begin{marginfigure}
                         \begin{tikzpicture}
@@ -183,7 +193,7 @@
                     ]
                     
 \tikzstyle{tabletitle} = [  font=\sffamily\large,
-                    fill={thirdblue!80},
+                    fill={thirdblue},
                     text=white
                     ]
 \newcommand{\numbertable}[1]{
@@ -197,12 +207,13 @@
                         #1
                             \end{minipage}
                         };
-                        \node[tabletitle, right=10pt] at (box.north west) {Number Crunching};
+                        \node[tabletitle, right=30pt] at (box.north west) {Number Crunching};
+                        \node[recipe-logo, right=5pt] at (box.north west) {\calc}; 
                         \end{tikzpicture}
                         \end{figure*}
     
 }                    
-\newcommand{\margininbox}[2]{
+\newcommand{\margininbox}[3]{
                         \begin{marginfigure}
                         \begin{tikzpicture}
                         \node [name-dest] (box){%
@@ -211,7 +222,8 @@
                             \normalsize{#2}
                             \end{minipage}
                         };
-                        \node[fancytitle, right=10pt] at (box.north west) {#1};
+                        \node[fancytitle, right=30pt] at (box.north west) {#1};
+                        \node[logbook-logo, right = 5pt] at(box.north west) {\protect#3};
                         \end{tikzpicture}
                         \end{marginfigure}
 }
@@ -229,7 +241,8 @@
                   \end{multicols}
                 \end{minipage}
             };
-            \node[fancytitle, right=10pt] at (box.north west) {#1};
+            \node[fancytitle, right=30pt] at (box.north west) {#1};
+            \node[logbook-logo, right = 5pt] at(box.north west) {\logbook};
         \end{tikzpicture}
     \end{figure*}
 }
