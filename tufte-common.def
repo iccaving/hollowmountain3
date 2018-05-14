@@ -1653,6 +1653,9 @@
   []% after the title body
 
 \definecolor{bettergrey}{RGB}{65,65,70}
+
+\definecolor{parchment}{RGB}{255, 225, 137}
+\definecolor{dparchment}{RGB}{175, 129, 0}
 \titleformat{\subsection}%
   [hang]% shape
   {\color{bettergrey}\normalfont\large\slshape}% format applied to label+text

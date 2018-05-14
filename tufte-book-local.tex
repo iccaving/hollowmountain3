@@ -121,6 +121,43 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
 
+\tikzstyle{recipe} = [   draw=parchment!80, 
+                    fill=parchment!20, 
+                    thick,
+                    rectangle, 
+                    rounded corners, 
+                    inner sep=5pt, 
+                    inner ysep=10pt
+                    ]
+\tikzstyle{recipe-title} = [  font=\sffamily\large, 
+                    fill=dparchment,
+                    text=white
+                    ]
+\tikzstyle{recipe-logo} = [  font=\sffamily\large, 
+                    fill=dparchment,
+                    rectangle,
+                    rounded corners,
+                    draw = parchment
+                    ]
+
+\newcommand{\ladle}{\protect\includegraphics[height = 4ex]{images/little_insets/ladle.png}}
+\newcommand{\helmet}{\protect\includegraphics[height = 4ex]{images/little_insets/helmet.png}}
+\newcommand{\recipecorner}[2]{
+                        \begin{marginfigure}
+                        \begin{tikzpicture}
+                        \node [recipe] (box){%
+                            \begin{minipage}{0.9\textwidth}
+                            \vspace{5pt}
+                            \sffamily\textcolor{dparchment}{#2}
+                            \end{minipage}
+                        };
+                        \node[recipe-title, right=30pt] at (box.north west) {#1};
+                        \node[recipe-logo, right=5pt] at (box.north west) {\ladle}; 
+                        \end{tikzpicture}
+                        \end{marginfigure}
+}
+
+
 
 \tikzstyle{name-dest} = [   draw=bettergrey!80, 
                     fill=bettergrey!20, 
