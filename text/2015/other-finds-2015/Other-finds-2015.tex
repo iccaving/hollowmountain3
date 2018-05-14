@@ -94,12 +94,7 @@ On 20/07, Jack, Katy, Chris and I went to explore leads in area K. K2 did not go
 \end{pagefigure}
 
 
-\begin{figure*}[h!]
- \centering
- \begin{tikzpicture}
-\node [table] (box){%
-    \begin{minipage}{\textwidth}
-\centering
+\numbertable{
    \begin{tabular}{lrrrr}
     Sector & \multicolumn{1}{l}{Passage name} & Survey length (m) & Stations & Average leg (m) \\ \midrule
     \multirow{10}[0]{*}{Atlantis} & \multicolumn{1}{l}{At World's End} & 33.03 & 10    & 3.67 \\
@@ -125,13 +120,8 @@ On 20/07, Jack, Katy, Chris and I went to explore leads in area K. K2 did not go
           &       &       &       &  \\
     \textbf{Total} &       & \textbf{2267.34} &       &  \\
     \end{tabular}%
-  \label{tab:addlabel}%	
-  \end{minipage}
-  };
-\node[tabletitle, right=10pt] at (box.north west) {Number crunching};
-\end{tikzpicture}
-\end{figure*}
-
+    }
+    
 \newpage
 \begin{pagesurvey}
 \centering
