@@ -121,8 +121,8 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,snakes}
 
-\tikzstyle{recipe} = [   draw=parchment!80, 
-                    fill=parchment!20, 
+\tikzstyle{recipe} = [   draw=thirdblue!80, 
+                    fill=thirdblue!20, 
                     thick,
                     rectangle, 
                     rounded corners, 
@@ -130,14 +130,14 @@
                     inner ysep=10pt
                     ]
 \tikzstyle{recipe-title} = [  font=\sffamily\large, 
-                    fill=dparchment,
+                    fill=thirdblue,
                     text=white
                     ]
 \tikzstyle{recipe-logo} = [  font=\sffamily\large, 
-                    fill=dparchment,
+                    fill=thirdblue,
                     rectangle,
                     rounded corners,
-                    draw = parchment
+                    draw = thirdblue
                     ]
 
 \newcommand{\ladle}{\protect\includegraphics[height = 4ex]{images/little_insets/ladle.png}}
@@ -148,7 +148,7 @@
                         \node [recipe] (box){%
                             \begin{minipage}{0.9\textwidth}
                             \vspace{5pt}
-                            \sffamily\textcolor{dparchment}{#2}
+                            \sffamily\textcolor{thirdblue!}{#2}
                             \end{minipage}
                         };
                         \node[recipe-title, right=30pt] at (box.north west) {#1};
@@ -173,8 +173,8 @@
                     text=white
                     ]
 
-\tikzstyle{table} = [       draw={ultramarine!80},
-                    fill={ultramarine!20},
+\tikzstyle{table} = [       draw={thirdblue!80},
+                    fill={thirdblue!20},
                     thick,
                     rectangle, 
                     rounded corners, 
@@ -183,17 +183,32 @@
                     ]
                     
 \tikzstyle{tabletitle} = [  font=\sffamily\large,
-                    fill={ultramarine!80},
+                    fill={thirdblue!80},
                     text=white
                     ]
-                    
+\newcommand{\numbertable}[1]{
+                        \begin{figure*}
+                        \begin{tikzpicture}
+                        \node [table] (box){%
+                            \begin{minipage}{\textwidth}
+                            \centering
+                            
+
+                        #1
+                            \end{minipage}
+                        };
+                        \node[tabletitle, right=10pt] at (box.north west) {Number Crunching};
+                        \end{tikzpicture}
+                        \end{figure*}
+    
+}                    
 \newcommand{\margininbox}[2]{
                         \begin{marginfigure}
                         \begin{tikzpicture}
                         \node [name-dest] (box){%
                             \begin{minipage}{0.9\textwidth}
                             \vspace{5pt}
-                            #2
+                            \normalsize{#2}
                             \end{minipage}
                         };
                         \node[fancytitle, right=10pt] at (box.north west) {#1};
@@ -249,4 +264,4 @@
 \usepackage{enumitem}
 \newcommand{\localtextbulletone}{\textcolor{bettergrey}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
 \renewcommand{\labelitemi}{\localtextbulletone}
-\newenvironment{citemize}{\begin{itemize}[itemsep=0.25ex,leftmargin=1cm, rightmargin=1cm, label=\localtextbulletone]}{\end{itemize}}
+\newenvironment{citemize}{\begin{itemize}[itemsep=0.25ex,leftmargin=0.5cm, rightmargin=0.5cm, label=\localtextbulletone]}{\end{itemize}}
