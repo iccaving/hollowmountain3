@@ -3,7 +3,7 @@
 
 %______________________HEADER INFO
 \title{The Hollow Mountain III}
-\author{Imperial College Caving Club Jamarska Sekcija Planinskega Dru\v{s}tva Tolmin }
+\author{Imperial College Caving Club \\Jamarska Sekcija Planinskega Dru\v{s}tva Tolmin }
 \publisher{Explorations under Tolminski Migovec 2013--2017}
 
 
@@ -17,7 +17,7 @@
 \captionsetup{compatibility=false}
 \usepackage{lettrine}
 \usepackage{xparse}
-\usepackage[margin]{fancyref}
+\usepackage{fancyref}
 
 \newcommand*{\fancyrefmaplabelprefix}{map}
 
@@ -102,6 +102,7 @@
 %___________________START OF THE DOCUMENT: CONTENT ADDED UNDERNEATH				
 
 \begin{document}
+\frontmatter 
 \maketitle %Title page
 
 \justify
@@ -126,7 +127,8 @@ Dedicated to those who contributed to the truly amazing story of the \passage{Ho
 \setfloatalignment{b} %puts the caption in line with the bottom of the floats for the whole doc.
 
 %__________________________PART 1 -INTRODUCTION (geography, geology, surveying, history, etc...
-
+	\tableofcontents %Table of contents listing parts -chapters - sections
+	\mainmatter
 	\input{text/Part1}
 %____________________________PART 2 - EXPLORATION OF MIGOVEC
 
@@ -139,9 +141,9 @@ Dedicated to those who contributed to the truly amazing story of the \passage{Ho
 	\input{text/2016/2016}
 	\input{text/2017/2017}
 %_______________________________  PART 3 - TRIP & CAVE DESCRIPTIONS - SURVEYS
-
+\backmatter
 	\input{text/Part3}
-	\tableofcontents %Table of contents listing parts -chapters - sections
+	
 	\listofsurveys
 	\listofmaps
    	 \printindex

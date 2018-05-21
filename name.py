@@ -26,22 +26,8 @@ hall_of_fame.write('\\begin{tcolorbox}\n'+'\\begin{fullwidth} \n'+'\\chapter{Hal
 hall_of_fame.write('\n Here follows a non-exhaustive list of the members involved in the exploration of \\passage{Tolminski Migovec} during the last five expeditions. Please forgive any omissions \n')
 hall_of_fame.write('\n \\begin{multicols}{2} \n')
 for i in range(len(your_list)):
-	k=0
-	if i != 0:
-		hall_of_fame.write('%s %s: \\textsl{'% (your_list[i][1],your_list[i][0]))
-		k=0
-		if k == len(your_list[i]) - your_list[i].count('n') - your_list[i].count('?') - 2:
-			hall_of_fame.write('%s }\n' % (your_list[i][h]))
-			hall_of_fame.write('\\newline\n')
-		else:
-			for h in range(2,len(your_list[i])):
-				if your_list[i][h] != 'n' and your_list[i][h] !='?':			
-					k+=1
-					if k != len(your_list[i]) - your_list[i].count('n') - your_list[i].count('?') - 2:
-						hall_of_fame.write('%s, ' % (your_list[i][h]))
-					else:
-						hall_of_fame.write('%s }\n' % (your_list[i][h]))
-						hall_of_fame.write('\\newline\n')
-
+	if i !=0:
+		hall_of_fame.write('%s %s \n \n'% (your_list[i][1],your_list[i][0]))
+		
 hall_of_fame.write('\\end{multicols} \n \\end{fullwidth} \n \\end{tcolorbox} \n')
 hall_of_fame.close()
