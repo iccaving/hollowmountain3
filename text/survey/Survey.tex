@@ -241,13 +241,13 @@ All newly added passage is duly annotated and labelled on plan and elevation and
 \section{Geographical Information Systems}
 \marginnote{Geographical Information Systems (GIS) enable the storage, display and edition of geographic information.} 
 
-Cave entrances, with coordinates, elevation and name are instances of point data with attributes. The centrelines or main line surveys are instances of polyline data, which can be queried in several ways: the \emph{Aven} software for example enables a cursory investigation of spatial relationships between different caves, or between the cave and some surface.
+Cave entrances, with coordinates, elevation and name are instances of point data with attributes. The centrelines or main line surveys are instances of polyline data, which can be queried in several ways: the \emph{Aven} software for example enables a cursory investigation of spatial relationships between different caves, or between the cave and some surface/terrain model.
 
 Other softwares like the opensource \emph{QGIS} allow many types of georeferenced datasets to be compared and manipulated, for instance the Slovenian  cadastral database hosts LiDAR (\emph{Light detection and Ranging}) elevation data as xyz files, and many more maps ranging from hours of sunshine per year, solid geology to official administrative boundaries and sensitive water protection areas. 
 
 With the pursuit of speleology in mind, using the elevation data in conjunction with geological mapping can yield insights into cave system development and more rarely, potential. 
 
-A common example of elevation data processing to produce visually appealing maps is \emph{hillshading}, or artificial illumination, which, as seen on the topographical maps within in this volume \fref{map:map overlay}, \fref{map:map area K},\fref{map:map area n} provide a qualitative appreciation of terrain. This is used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
+A common example of elevation data processing to produce maps is \emph{hillshading}: revealing textural changes between e.g. a limestone pavement and a dwarf pine covered slope  and, which, as seen on the topographical maps within this volume \fref{map:map overlay}, \fref{map:map area K},\fref{map:map area n} provide a qualitative appreciation of terrain. This is often used in conjunction with elevation contours, which provide a quantitative measure of elevation at discrete horizons. 
 
 In practice, in 8-bit images, a digital number between $0-255$ is assigned to each output pixel, proportional to the cosine of the 2-dimensional angle between the surface normal vector and solar illumination vector \citep{corripio2003vectorial}. 
 
@@ -264,7 +264,7 @@ In practice, in 8-bit images, a digital number between $0-255$ is assigned to ea
 \subcaption{ } \label{aspect}
 \end{subfigure}
 
-\caption[Slope and Aspect maps]{Examples of  \emph{(top)} slope and  \emph{(bottom)} aspect maps generated from simple elevation data. The area is 1km x 1km over \protect\passage{Tolminski Kuk} --- Slovenia National Grid EPSG 3794}
+\caption[Slope and Aspect maps]{Examples of  \emph{(top)} slope and  \emph{(bottom)} aspect maps generated from simple elevation data. The area is 1km x 1km over \protect\passage{Tolminski Kuk} --- Slovenian National Grid EPSG 3794}
 \end{pagemap}
 
 
