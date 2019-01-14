@@ -206,7 +206,7 @@
                     text=white
                     ]
 \newcommand{\numbertable}[1]{
-                        \begin{minipage}[c]{1.4\linewidth}
+                        \begin{figure*}[h!]
                         \begin{tikzpicture}
                         \node [table] (box){%
                             \begin{minipage}{\textwidth}
@@ -220,7 +220,7 @@
                         \node[tabletitle, right=30pt] at (box.north west) {Number Crunching};
                         \node[recipe-logo, right=5pt] at (box.north west) {\calc}; 
                         \end{tikzpicture}
-                        \end{minipage}
+                        \end{figure*}
     
 }                    
 \newcommand{\margininbox}[3]{
