@@ -1,0 +1,1 @@
+gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sOutputFile=hollowmountain3_embedded.pdf -f hollowmountain3.pdf
